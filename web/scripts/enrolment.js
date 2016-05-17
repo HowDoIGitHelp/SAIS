@@ -6,5 +6,12 @@
 
 
 function loadEnrolment(id){
-    $("#course-enrolment"+id).load("courseEnrolment.jsp?id="+id);
+    
+    if(document.getElementById("show-button"+id).innerHTML=="show"){
+        $("#course-enrolment"+id).load("courseEnrolment.jsp?id="+id);
+    }
+    if(document.getElementById("show-button"+id).innerHTML=="hide"){
+        document.getElementById("course-enrolment"+id).innerHTML=" ";
+    }
+    toggleText("show-button"+id,"show","hide");
 }
