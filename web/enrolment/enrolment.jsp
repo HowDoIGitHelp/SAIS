@@ -43,5 +43,31 @@
                 }
             %>
         </div>
+        
+        <div id="enlisted-courses"><%--added schedules--%>
+            <%
+            String student_id="1";
+            int course_enrolment_id;
+            String day;
+            String schedule;
+            String professor;
+            String room;
+            int course_id;
+            ResultSet courseEnlistmentRS=con.executeQuery("select * from course,day,schedule,course_enrolment,room,professor where day.id=course_enrolment.day_id and schedule.id=course_enrolment.schedule_id and professor.id=course_enrolment.professor_id and room.id = course_enrolment.room_id and course.id=course_enrolment.course_id and course_enrolment.id in (select course_enrolment_id from enlistment where student_id="+student_id+")");
+            while(courseEnlistmentRS.next()){
+                course_enrolment_id=courseEnlistmentRS.getInt("course_enrolment.id");
+                code=courseEnlistmentRS.getString("course.code");
+                day=courseEnlistmentRS.getString("day.name");
+                schedule=courseEnlistmentRS.getString("schedule.start")+" "+courseEnlistmentRS.getString("schedule.end");
+                professor=courseEnlistmentRS.getString("professor.name");
+                room=courseEnlistmentRS.getString("room.name");
+                course_id=courseEnlistmentRS.getInt("course.id");
+            %>
+            <div><%--one course--%>
+                <%=code%> <%=day%> <%=schedule%> <%=professor%> <%=room%> 
+                <a onclick="unlist(<%=course_enrolment_id%>,<%=course_id%>)">remove from cart</a>
+            </div>
+            <%}%>
+        </div>
     </body>
 </html>

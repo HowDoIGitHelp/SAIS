@@ -8,6 +8,7 @@ package SAIS;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -39,5 +40,23 @@ public class SAISConnection {
     }
     public ResultSet executeQuery(String s) throws SQLException{
         return query.executeQuery(s);
+    }
+    public void executePreparedQuery(String s,String s1) throws SQLException{
+        PreparedStatement stmt = conn.prepareStatement(s);
+        stmt.setString(1, s1);
+        stmt.execute();
+    }
+    public void executePreparedQuery(String s,String s1,String s2) throws SQLException{
+        PreparedStatement stmt = conn.prepareStatement(s);
+        stmt.setString(1, s1);
+        stmt.setString(2, s2);
+        stmt.execute();
+    }
+    public void executePreparedQuery(String s,String s1,String s2,String s3) throws SQLException{
+        PreparedStatement stmt = conn.prepareStatement(s);
+        stmt.setString(1, s1);
+        stmt.setString(2, s2);
+        stmt.setString(3, s3);
+        stmt.execute();
     }
 }

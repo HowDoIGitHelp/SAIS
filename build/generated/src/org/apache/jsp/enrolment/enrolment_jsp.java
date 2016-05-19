@@ -57,6 +57,9 @@ public final class enrolment_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>JSP Page</title>\n");
+      out.write("        <script src=\"../scripts/jquery-1.11.3.js\"/></script>\n");
+      out.write("        <script src=\"../scripts/generalScripts.js\"/></script>\n");
+      out.write("        <script src=\"../scripts/enrolment.js\"/></script>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <div> ");
@@ -68,7 +71,7 @@ public final class enrolment_jsp extends org.apache.jasper.runtime.HttpJspBase
                 String name;
                 String field;
                 String description;
-                ResultSet courseRS=con.executeQuery("select * from courses");
+                ResultSet courseRS=con.executeQuery("select * from course");
                 while(courseRS.next()){
                     id=courseRS.getInt("id");
                     code=courseRS.getString("code");
@@ -76,13 +79,23 @@ public final class enrolment_jsp extends org.apache.jasper.runtime.HttpJspBase
                     description=courseRS.getString("description");
             
       out.write("\n");
-      out.write("            <div>");
+      out.write("            <div style=\"border-style: solid\">");
       out.write("\n");
-      out.write("                ");
+      out.write("                <b>");
       out.print(code);
+      out.write(' ');
       out.print(name);
+      out.write(' ');
       out.print(description);
-      out.write("\n");
+      out.write(" <div id=\"show-button");
+      out.print(id);
+      out.write("\" onclick=\"loadEnrolment(");
+      out.print(id);
+      out.write(")\">show</div></b>\n");
+      out.write("                <div id=\"course-enrolment");
+      out.print(id);
+      out.write("\">\n");
+      out.write("                </div>\n");
       out.write("            </div>\n");
       out.write("            ");
 
