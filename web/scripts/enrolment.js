@@ -17,13 +17,18 @@ function loadEnrolment(id){
 }
 function enlist(id){
     $.post("../dbupdate/courseEnlistment.jsp", {studentId:1,courseEnrolmentId:id});
+    //$("#schedule-matrix").load("enrolment.jsp #schedule-matrix",{studentId:1},alert("updated schedule"));
     $("#enlisted-courses").load("enrolment.jsp #enlisted-courses",{studentId:1},alert("added to cart"));
     toggleText("add-button"+id,"add to cart","added");
     document.getElementById("add-button"+id).removeAttribute("onclick");
 }
 function unlist(id){
     $.post("../dbupdate/courseUnlistment.jsp", {studentId:1,courseEnrolmentId:id});
+    //$("#schedule-matrix").load("enrolment.jsp #schedule-matrix",{studentId:1},alert("updated schedule"));
     $("#enlisted-courses").load("enrolment.jsp #enlisted-courses",{studentId:1},alert("removed from cart"));
     toggleText("add-button"+id,"add to cart","added");
     document.getElementById("add-button"+id).setAttribute("onclick","enlist("+id+")");
+}
+function fillSchedule(row,col){
+   document.getElementById(row+"-"+col).innerHTML="x"; 
 }
