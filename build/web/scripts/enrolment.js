@@ -7,28 +7,53 @@
 
 function loadEnrolment(id){
     
-    if(document.getElementById("show-button"+id).innerHTML=="show"){
+    if($("#show-button"+id).html()=="show"){
         $("#course-enrolment"+id).load("courseEnrolment.jsp",{id:id});
     }
-    if(document.getElementById("show-button"+id).innerHTML=="hide"){
-        document.getElementById("course-enrolment"+id).innerHTML=" ";
+    if($('#show-button'+id).html()=='hide'){
+        $("#course-enrolment"+id).html(" ");
     }
     toggleText("show-button"+id,"show","hide");
 }
-function enlist(id){
+function enlist(id,start,end,strDay){
     $.post("../dbupdate/courseEnlistment.jsp", {studentId:1,courseEnrolmentId:id});
-    //$("#schedule-matrix").load("enrolment.jsp #schedule-matrix",{studentId:1},alert("updated schedule"));
     $("#enlisted-courses").load("enrolment.jsp #enlisted-courses",{studentId:1},alert("added to cart"));
+    scheduleSlot(start,end,strDay);
     toggleText("add-button"+id,"add to cart","added");
-    document.getElementById("add-button"+id).removeAttribute("onclick");
+    $("#add-button"+id).prop("onclick",null);//removeAttr doesnt work on ie
 }
-function unlist(id){
+function unlist(id,start,end,strDay){
     $.post("../dbupdate/courseUnlistment.jsp", {studentId:1,courseEnrolmentId:id});
-    //$("#schedule-matrix").load("enrolment.jsp #schedule-matrix",{studentId:1},alert("updated schedule"));
     $("#enlisted-courses").load("enrolment.jsp #enlisted-courses",{studentId:1},alert("removed from cart"));
+    unscheduleSlot(start,end,strDay);
     toggleText("add-button"+id,"add to cart","added");
-    document.getElementById("add-button"+id).setAttribute("onclick","enlist("+id+")");
+    $("#add-button"+id).attr("onclick","enlist("+id+")");
 }
 function fillSchedule(row,col){
-   document.getElementById(row+"-"+col).innerHTML="x"; 
+   $("#"+row+"-"+col).html("x"); 
+}
+function eraseSchedule(row,col){
+   $("#"+row+"-"+col).html(" "); 
+}
+function scheduleSlot(start,end,strDay){
+    console.log(strDay);
+    for(var i=0;i<strDay.length;i++){
+        console.log(i+" "+strDay.charAt(i));
+        if(strDay.charAt(i)=='1'){
+            for(var j=start;j<end;j+=0.5){
+                fillSchedule((j*2-12),i);
+            }
+        }
+    }
+}
+function unscheduleSlot(start,end,strDay){
+    console.log(strDay);
+    for(var i=0;i<strDay.length;i++){
+        console.log(i+" "+strDay.charAt(i));
+        if(strDay.charAt(i)=='1'){
+            for(var j=start;j<end;j+=0.5){
+                eraseSchedule((j*2-12),i);
+            }
+        }
+    }
 }

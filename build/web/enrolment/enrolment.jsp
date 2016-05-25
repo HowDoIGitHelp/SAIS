@@ -71,7 +71,7 @@
             %>
             <div><%--one course--%>
                 <%=code%> <%=day%> <%=schedule%> <%=professor%> <%=room%> 
-                <a onclick="unlist(<%=course_enrolment_id%>,<%=course_id%>)">remove from cart</a>
+                <a onclick="unlist(<%=course_enrolment_id%>,<%=start%>,<%=end%>,'<%=day%>')">remove from cart</a>
             </div>
             <%}%>
         </div>
@@ -163,15 +163,7 @@
                 start=courseEnlistmentRS2.getString("schedule.start");
                 end=courseEnlistmentRS2.getString("schedule.end");
             %>
-                <%
-                    for(Point p:sched.scheduleSlot(start, end, day)){
-                %>
-                <script>
-                    fillSchedule(<%=p.y%>,<%=p.x%>)
-                </script>
-                <%
-                    }
-                %>
+                <script>scheduleSlot(<%=start%>,<%=end%>,'<%=day%>')</script>
             <%}%>
         </div>
     </body>

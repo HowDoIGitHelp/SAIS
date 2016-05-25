@@ -3,6 +3,8 @@ package org.apache.jsp.enrolment;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.awt.Point;
+import SAIS.Schedule;
 import java.sql.ResultSet;
 import SAIS.SAISConnection;
 
@@ -46,8 +48,11 @@ public final class enrolment_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
 
     SAISConnection con = new SAISConnection();
+    Schedule sched = new Schedule();
     con.connect();
 
       out.write("\n");
@@ -103,7 +108,6 @@ public final class enrolment_jsp extends org.apache.jasper.runtime.HttpJspBase
             
       out.write("\n");
       out.write("        </div>\n");
-      out.write("        \n");
       out.write("        <div id=\"enlisted-courses\">");
       out.write("\n");
       out.write("            ");
@@ -112,6 +116,8 @@ public final class enrolment_jsp extends org.apache.jasper.runtime.HttpJspBase
             int course_enrolment_id;
             String day;
             String schedule;
+            String start;
+            String end;
             String professor;
             String room;
             int course_id;
@@ -119,8 +125,10 @@ public final class enrolment_jsp extends org.apache.jasper.runtime.HttpJspBase
             while(courseEnlistmentRS.next()){
                 course_enrolment_id=courseEnlistmentRS.getInt("course_enrolment.id");
                 code=courseEnlistmentRS.getString("course.code");
-                day=courseEnlistmentRS.getString("day.name");
+                day=courseEnlistmentRS.getString("course_enrolment.week_stamp");
                 schedule=courseEnlistmentRS.getString("schedule.start")+" "+courseEnlistmentRS.getString("schedule.end");
+                start=courseEnlistmentRS.getString("schedule.start");
+                end=courseEnlistmentRS.getString("schedule.end");
                 professor=courseEnlistmentRS.getString("professor.name");
                 room=courseEnlistmentRS.getString("room.name");
                 course_id=courseEnlistmentRS.getInt("course.id");
@@ -143,17 +151,14 @@ public final class enrolment_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.print(course_enrolment_id);
       out.write(',');
       out.print(course_id);
-      out.write(")\">remove from cart</a>\\\n");
-      out.write("                <script>\n");
-      out.write("                    \n");
-      out.write("                </script>\n");
+      out.write(")\">remove from cart</a>\n");
       out.write("            </div>\n");
       out.write("            ");
 }
       out.write("\n");
       out.write("        </div>\n");
-      out.write("        <div>\n");
-      out.write("            <table>\n");
+      out.write("        <div id=\"schedule-matrix\">\n");
+      out.write("            <table border=\"1\">\n");
       out.write("                <tr>\n");
       out.write("                    <td id=\"0-0\"></td><td id=\"0-1\"></td><td id=\"0-2\"></td><td id=\"0-3\"></td><td id=\"0-4\"></td><td id=\"0-5\"></td><td id=\"0-6\"></td>\n");
       out.write("                </tr>\n");
@@ -233,6 +238,35 @@ public final class enrolment_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <td id=\"25-0\"></td><td id=\"25-1\"></td><td id=\"25-2\"></td><td id=\"25-3\"></td><td id=\"25-4\"></td><td id=\"25-5\"></td><td id=\"25-6\"></td>\n");
       out.write("                </tr>\n");
       out.write("            </table>\n");
+      out.write("            ");
+
+            ResultSet courseEnlistmentRS2=con.executeQuery("select * from course,day,schedule,course_enrolment,room,professor where day.id=course_enrolment.day_id and schedule.id=course_enrolment.schedule_id and professor.id=course_enrolment.professor_id and room.id = course_enrolment.room_id and course.id=course_enrolment.course_id and course_enrolment.id in (select course_enrolment_id from enlistment where student_id="+student_id+")");
+            while(courseEnlistmentRS2.next()){
+                day=courseEnlistmentRS2.getString("course_enrolment.week_stamp");
+                start=courseEnlistmentRS2.getString("schedule.start");
+                end=courseEnlistmentRS2.getString("schedule.end");
+            
+      out.write("\n");
+      out.write("                ");
+
+                    for(Point p:sched.scheduleSlot(start, end, day)){
+                
+      out.write("\n");
+      out.write("                <script>\n");
+      out.write("                    fillSchedule(");
+      out.print(p.y);
+      out.write(',');
+      out.print(p.x);
+      out.write(")\n");
+      out.write("                </script>\n");
+      out.write("                ");
+
+                    }
+                
+      out.write("\n");
+      out.write("            ");
+}
+      out.write("\n");
       out.write("        </div>\n");
       out.write("    </body>\n");
       out.write("</html>\n");

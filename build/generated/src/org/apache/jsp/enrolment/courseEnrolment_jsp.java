@@ -50,20 +50,30 @@ public final class courseEnrolment_jsp extends org.apache.jasper.runtime.HttpJsp
     con.connect();
 
       out.write("\n");
-      out.write("<div>\n");
+      out.write("    \n");
       out.write("            ");
 
+                String student_id="1";
+                String course_id=request.getParameter("id");
+                int id;
                 String code;
                 String day;
                 String schedule;
-                
-                ResultSet courseRS=con.executeQuery("select * from course,day,schedule,course_enrolment where course.id=1 and day.id=course_enrolment.day_id and schedule.id=course_enrolment.schedule_id;");
+                String professor;
+                String room;
+                int enlisted;
+                ResultSet courseRS=con.executeQuery("select * from (course,day,schedule,course_enrolment,room,professor) left join enlistment on course_enrolment.id=enlistment.course_enrolment_id where (enlistment.student_id="+student_id+" or enlistment.student_id is null) and day.id=course_enrolment.day_id and schedule.id=course_enrolment.schedule_id and professor.id=course_enrolment.professor_id and room.id = course_enrolment.room_id and course.id=course_enrolment.course_id and course_enrolment.id and course.id="+course_id+" order by course_enrolment.id;");
                 while(courseRS.next()){
+                    id=courseRS.getInt("course_enrolment.id");
                     code=courseRS.getString("course.code");
                     day=courseRS.getString("day.name");
                     schedule=courseRS.getString("schedule.start")+" "+courseRS.getString("schedule.end");
+                    professor=courseRS.getString("professor.name");
+                    room=courseRS.getString("room.name");
+                    enlisted=courseRS.getInt("enlistment.course_enrolment_id");
             
       out.write("\n");
+      out.write("            \n");
       out.write("            <div>");
       out.write("\n");
       out.write("                ");
@@ -72,14 +82,44 @@ public final class courseEnrolment_jsp extends org.apache.jasper.runtime.HttpJsp
       out.print(day);
       out.write(' ');
       out.print(schedule);
+      out.write(' ');
+      out.print(professor);
+      out.write(' ');
+      out.print(room);
+      out.write(" \n");
+      out.write("            ");
+
+                    if(enlisted==0){
+            
+      out.write("\n");
+      out.write("                <a id=\"add-button");
+      out.print(id);
+      out.write("\" onclick=\"enlist(");
+      out.print(id);
+      out.write(")\">add to cart</a>\n");
+      out.write("            ");
+
+                    }
+            
+      out.write("\n");
+      out.write("            ");
+
+                    if(enlisted>0){
+            
+      out.write("\n");
+      out.write("                <a id=\"add-button");
+      out.print(id);
+      out.write("\">added</a>\n");
+      out.write("            ");
+
+                    }
+            
       out.write("\n");
       out.write("            </div>\n");
       out.write("            ");
 
                 }
             
-      out.write("\n");
-      out.write("</div>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
