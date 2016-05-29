@@ -1,0 +1,65 @@
+#main-menu-container{
+    height: auto;
+    width: 100%;
+    text-align: center;
+}
+.menu-card{
+    width: 30%;
+    height: 300px;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px solid white;
+    cursor: pointer;
+}
+.menu-card:hover{
+    border: 2px solid rgb(200, 200, 200);
+    background-color: rgb(245, 245, 245);
+}
+.menu-icon{
+    height: 60%;
+    width: 100%;
+}
+.menu-label{
+    height: 40%;
+    width: 90%;
+    text-align: center;
+    margin: auto;
+}
+.menu-main-label{
+    height: auto;
+    font-size: 25px;
+}
+.menu-subprev{
+    line-height: 1.5em;
+    margin: auto;
+    margin-top: 5%;
+    color: rgb(120, 120, 120);
+}
+.submenu-container{
+    width: 95%;
+    margin: auto;
+    background-color: rgb(240, 240, 240);
+    margin-top: 10px;
+    text-align: left;
+    overflow: hidden;
+}
+.submenu{
+    margin: 10px;
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 20px 10px 20px;
+    font-size: 18px;
+    color: rgb(100, 100, 100);
+}
+.submenu:hover{
+    color: white;
+}
+.collapse{
+    height: 0px;
+    opacity: 0;
+}
+.expand{
+    opacity: 1;
+    height: auto;
+}

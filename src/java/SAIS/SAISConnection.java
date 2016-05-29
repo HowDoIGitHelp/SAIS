@@ -26,17 +26,12 @@ public class SAISConnection {
     public SAISConnection() throws SQLException{
         
     }
-    public void connect(){
-        try {
+    public void connect() throws ClassNotFoundException, SQLException{
             Class.forName("com.mysql.jdbc.Driver");
             conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/sais", "root", "");
             query = conn.createStatement();
             //String respond = "";
-        } catch (ClassNotFoundException ex) {
-            System.out.println("Class not found");
-        } catch (SQLException ex) {
-            System.out.println("SQL Exception");
-        }
+        
     }
     public ResultSet executeQuery(String s) throws SQLException{
         return query.executeQuery(s);

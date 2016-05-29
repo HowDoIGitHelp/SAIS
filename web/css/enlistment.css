@@ -1,0 +1,189 @@
+.page-content{
+    margin-top: 160px;
+    min-height: 1200px;
+}
+#panel{
+    position: relative;
+    overflow-x: hidden;
+}
+#slider{
+    position: absolute;
+    width: 300%;
+    height: auto; 
+    transform: translateX(0px);  
+}
+.slider-panel{
+    width: 950px;
+    height: auto;
+    font-size: 30px;
+    float: left;
+}
+#class-searcher{
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid rgb(230, 230, 230);
+}
+#search-status{
+    float: left;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 23px;
+    color: rgb(100, 100, 100);
+}
+#class-search-input{
+    float: right;
+    height: 40px;
+    margin-top: 10px;
+    width: 300px;
+    outline: none;
+    border: 2px solid rgb(200, 200, 200);
+    padding-left: 10px;
+}
+#class-search-input:focus{
+    border: 2px solid rgb(150, 150, 150);
+}
+#search-class-button{
+    float: right;
+    height: 46px;
+    color: rgb(100, 100, 100);
+    width: 100px;
+    margin-top: 10px;
+    border: 2px solid rgb(200, 200, 200);
+    border-left: none;
+    background-color: rgb(240, 240, 240);
+    cursor: pointer;
+}
+#search-class-button:hover{
+    background-color: rgb(230, 230, 230);
+    border-left: none;
+}
+.search-result{
+    width: 100%;
+    padding-bottom: 15px;
+    
+}
+.odd{
+    background-color: rgb(245, 245, 245);
+}
+.even{
+    background-color: white;
+}
+.class-header{
+    width: 100%;
+    height: 70px;
+    padding-top: 5px;
+}
+.class-number{
+    float: left;
+    width: 20%;
+    border-right: 1px solid rgb(200, 200, 200);
+    text-align: center;
+    margin-top: 20px;
+    font-size: 23px;
+    font-weight: bold;
+    color: rgb(100 ,100 ,100);
+}
+.class-description{
+    float: left;
+    width: auto;
+    max-width: 70%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left: 5%;
+    font-weight: lighter;
+    margin-top: 20px;
+    font-size: 23px;
+    color: rgb(100, 100, 100);
+}
+.class-infobar{
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+    height: 50px;
+}
+.class-info{
+    float: left;
+    font-size: 17px;
+    padding: 8px 20px 8px 20px;
+    border: 2px solid rgb(220, 220, 220);
+    color: rgb(130, 130, 130);
+    width: auto;
+    margin-right: 10px;
+}
+.addcart-button{
+    float: right;
+    font-size: 17px;
+    padding: 8px 20px 8px 20px;
+    border: 2px solid #16a085;
+    color: #16a085;
+    width: auto;
+    cursor: pointer;
+}
+.addcart-button:hover{
+    background-color: #16a085;
+    color: white;
+}
+.enlist-button{
+    float: right;
+    height: 46px;
+    color: rgb(100, 100, 100);
+    padding: 0px 20px 0px 20px;
+    margin-top: 10px;
+    border: 2px solid rgb(200, 200, 200);
+    background-color: rgb(240, 240, 240);
+    cursor: pointer;
+}
+.enlist-button:hover{
+    background-color: rgb(230, 230, 230);
+}
+.removecart-button{
+    float: right;
+    font-size: 17px;
+    padding: 8px 20px 8px 20px;
+    border: 2px solid indianred;
+    color: indianred;
+    width: auto;
+    cursor: pointer;
+}
+.removecart-button:hover{
+    background-color: indianred;
+    color: white;
+}
+#sched-matrix{
+    width: 100%;
+    padding: 0px;
+    border-spacing: 0px;
+    margin-top: 20px;
+}
+.sched-tr{
+    height: 40px;
+    
+}
+.sched-tr > td{
+    width: 12.5%;
+    font-size: 16px;
+    text-align: center;
+    color: rgb(100, 100, 100);
+    border: 1px solid rgb(230, 230, 230);
+    border-collapse: collapse;
+}
+.loadclass-button{
+    float: right;
+    font-size: 17px;
+    margin-top: 20px;
+    margin-right: 50px;
+    padding: 8px 20px 8px 20px;
+    border: 2px solid #16a085;
+    color: #16a085;
+    width: auto;
+    cursor: pointer;
+}
+.added{
+    background-color: #16a085;
+    color: white;
+}
+.loadclass-button:hover{
+    background-color: #16a085;
+    color: white;
+}

@@ -150,8 +150,13 @@ public final class enrolment_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <a onclick=\"unlist(");
       out.print(course_enrolment_id);
       out.write(',');
-      out.print(course_id);
-      out.write(")\">remove from cart</a>\n");
+      out.print(start);
+      out.write(',');
+      out.print(end);
+      out.write(',');
+      out.write('\'');
+      out.print(day);
+      out.write("')\">remove from cart</a>\n");
       out.write("            </div>\n");
       out.write("            ");
 }
@@ -247,23 +252,14 @@ public final class enrolment_jsp extends org.apache.jasper.runtime.HttpJspBase
                 end=courseEnlistmentRS2.getString("schedule.end");
             
       out.write("\n");
-      out.write("                ");
-
-                    for(Point p:sched.scheduleSlot(start, end, day)){
-                
-      out.write("\n");
-      out.write("                <script>\n");
-      out.write("                    fillSchedule(");
-      out.print(p.y);
+      out.write("                <script>scheduleSlot(");
+      out.print(start);
       out.write(',');
-      out.print(p.x);
-      out.write(")\n");
-      out.write("                </script>\n");
-      out.write("                ");
-
-                    }
-                
-      out.write("\n");
+      out.print(end);
+      out.write(',');
+      out.write('\'');
+      out.print(day);
+      out.write("')</script>\n");
       out.write("            ");
 }
       out.write("\n");

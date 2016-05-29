@@ -30,9 +30,40 @@ public class Schedule {
     }
     public static void main(String[] args) {
         Schedule s=new Schedule();
-        List<Point> l=s.scheduleSlot("0730","0900","0100100");
-        for(Point p:l)
-            System.out.println(p.x+" "+p.y);
+        System.out.println(schedulizeDay("0100100")+" "+
+        schedulizeTime("9","10.5"));
     }
-    
+    public static String schedulizeDay(String s){
+        String t="";
+        if(s.charAt(0)=='1')
+            t+="S";
+        if(s.charAt(1)=='1')
+            t+="M";
+        if(s.charAt(2)=='1')
+            t+="T";
+        if(s.charAt(3)=='1')
+            t+="W";
+        if(s.charAt(4)=='1')
+            t+="Th";
+        if(s.charAt(5)=='1')
+            t+="F";
+        if(s.charAt(6)=='1')
+            t+="S";
+        return t;
+    }
+    public static String schedulizeTime(String start,String end){
+        double s=Double.valueOf(start);
+        double e=Double.valueOf(end);
+        String r="";
+        if(Math.ceil(s)-Math.floor(s)==0.d)
+            r+=String.valueOf((int)Math.floor(s))+":00";
+        else
+            r+=String.valueOf((int)Math.floor(s)+":30");
+        r+="-";
+        if(Math.ceil(e)-Math.floor(e)==0.d)
+            r+=String.valueOf((int)Math.floor(e))+":00";
+        else
+            r+=String.valueOf((int)Math.floor(e)+":30");
+        return r;
+    }
 }

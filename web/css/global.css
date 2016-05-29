@@ -1,0 +1,252 @@
+body, html{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Segoe UI';
+    min-width: 950px;
+}
+
+/* CANVAS-RELATED PROPERTIES */
+
+.dead-center{
+    position: absolute;
+    margin: auto;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+.icon-holder{
+    position: relative;
+}
+.icon-holder > img{
+    position: absolute;
+    margin: auto;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 50%;
+    width: 50%;
+}
+
+.animate2s{
+    -webkit-transition: all 0.2s ease-in-out;
+       -moz-transition: all 0.2s ease-in-out;
+         -o-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+}
+.animate3s{
+    -webkit-transition: all 0.3s ease-in-out;
+       -moz-transition: all 0.3s ease-in-out;
+         -o-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+}
+
+/* THEME COLORS */
+.theme-font-color{
+    color: #5C97BF;
+}
+.theme-bg-color{
+    background-color: #5C97BF;
+}
+.temp{
+    background-color: rgb(240, 240, 240);
+}
+.theme-icon{
+    fill:  #5C97BF;
+}
+.theme-link:hover{
+    color: #5C97BF;
+}
+.theme-bghover:hover{
+    background-color: #5C97BF;
+}
+
+#site-header{
+    position: fixed;
+    top: 0px;
+    height: 80px;
+    width: 100%;
+    min-width: 950px;
+    z-index: 1000;
+}
+.site-subheader{
+    position: fixed;
+    top: 80px;
+    width: 100%;
+    min-width: 950px;
+    z-index: 200;
+    height: 70px;
+    background-color: rgb(245, 245, 245);
+    border-bottom: 1px solid rgb(220, 220, 220);
+}
+.subheader-center{
+    height: 100%;
+    width: 950px;
+    margin: auto;
+}
+.subheader-label{
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(100, 100, 100);
+    margin-top: 22px;
+}
+.subheader-tab{
+    float: right;
+    height: 100%;
+    width: auto;
+    cursor: pointer;
+}
+.subheader-tab:hover {
+    background-color: rgb(220, 220, 220);
+}
+.sh-tab-icon{
+    float: left;
+    width: 70px;
+    height: 100%;
+}
+.sh-tab-icon > img{
+    height: 30%;
+    width: 30%;
+}
+.sh-tab-label{
+    float: left;
+    margin-right: 25px;
+    font-size: 18px;
+    margin-top: 23px;
+    color: rgb(100, 100, 100);
+}
+.sel{
+    background-color: rgb(220, 220, 220);
+}
+.page-content{
+    width: 950px;
+    min-height: 700px;
+    margin: auto;
+    margin-top: 90px;
+}
+#site-id{
+    width: auto;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+}
+#site-id:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+#site-logo-container{
+    height: 100%;
+    width: 100px;
+    background-image: url('/resources/images/up-logo.png');
+    background-position: center;
+    background-size: 60%;
+    background-repeat: no-repeat;
+    float: left;
+}
+#site-name{
+    float: left;
+    width: 140px;
+    font-weight: bold;
+    font-size: 30px;
+    color: White;
+    margin-top: 20px;
+}
+#site-user{
+    float: right;
+    height: 100%;
+    width: auto;
+    position: relative;
+    cursor: pointer;
+}
+#site-user:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+#user-icon{
+    float: left;
+    width: 80px;
+    height: 100%;
+    margin-left: 10px;
+}
+#user-icon > img{
+    height: 35%;
+    width: 35%;
+}
+#user-name{
+    float: left;
+    width: auto;
+    margin: 30px 30px 0px 0px;
+    font-size: 18px;
+    color: white;
+}
+#site-search{
+    float: right;
+    margin-right: 3%;
+    width: 400px;
+    height: 65%;
+    cursor: pointer;
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+#search-container{
+    float: left;
+    width: 85%;
+    height: 100%;
+}
+#search-icon{
+    float: left;
+    height: 100%;
+    width: 15%;
+}
+#search-icon > img{
+    height: 40%;
+    width: 40%;
+}
+#search-input{
+    width: 97%;
+    height: 95%;
+    font-size: 17px;
+    margin-left: 3%;
+    border: 0px;
+    color: white;
+    background-color: transparent;
+    opacity: 0.8;
+}
+#user-box{
+    position: fixed;
+    top: 83px;
+    background-color: white;
+    width: 99%;
+    position: absolute;
+    overflow: hidden;
+    z-index: 1200;
+}
+.ubox-collapse{
+    height: 0px;
+    border: 1px solid transparent;
+}
+.ubox-expand{
+    height: 230px;
+    border: 1px solid rgb(230, 230, 230);
+}
+#sais-id{
+    width: auto;
+    padding: 10px 0px 10px 20px;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+#sid-label{
+    margin-top: 10px;
+    padding: 10px 0px 0px 20px;
+    width: auto;
+    color: rgb(100, 100, 100);
+}
+.user-button{
+    width: auto;
+    padding: 15px 0px 15px 20px;
+    font-size: 17px;
+    color: rgb(100, 100, 100);
+}
+.user-button:hover{
+    background-color: rgb(240, 240, 240);
+}
