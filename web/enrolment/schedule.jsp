@@ -20,7 +20,7 @@
     String completeSchedule;
     String block;
     int enlisted;
-    ResultSet courseRS=con.executeQuery("select * from (course,day,schedule,course_enrolment,room,professor) left join enlistment on course_enrolment.id=enlistment.course_enrolment_id where (enlistment.student_id="+student_id+" or enlistment.student_id is null) and day.id=course_enrolment.day_id and schedule.id=course_enrolment.schedule_id and professor.id=course_enrolment.professor_id and room.id = course_enrolment.room_id and course.id=course_enrolment.course_id and course_enrolment.id and course.id="+course_id+" order by course_enrolment.id;");
+    ResultSet courseRS=con.executeQuery("select * from (course,day,schedule,course_enrolment,room,professor) left join enlistment on course_enrolment.id=enlistment.course_enrolment_id where (enlistment.student_id="+student_id+" or enlistment.student_id is null) and day.id=course_enrolment.day_id and schedule.id=course_enrolment.schedule_id and professor.id=course_enrolment.professor_id and room.id = course_enrolment.room_id and course.id=course_enrolment.course_id and course.id="+course_id+" order by course_enrolment.id;");
     while(courseRS.next()){
         id=courseRS.getInt("course_enrolment.id");
         code=courseRS.getString("course.code");

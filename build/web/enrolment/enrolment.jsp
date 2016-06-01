@@ -24,7 +24,7 @@
         <div id="site-header" class="theme-bg-color">
             <div id="site-id" class="animate2s">
                 <div id="site-logo-container"></div>
-                <div id="site-name">UP SAIS</div>
+                <div id="site-name" onclick="location.href='../index.html'">UP SAIS</div>
             </div>
             
             <div id="site-user" class="animate2s">
